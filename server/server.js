@@ -4,12 +4,15 @@ const { Server } = require("socket.io");
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:3000"], // Add both Vite and Create React App ports
+    origin: [
+      "http://localhost:5173", 
+      "http://localhost:3000",
+      "https://websocket-olive-two.vercel.app/" // Add your deployed frontend URL
+    ],
     methods: ["GET", "POST"],
     credentials: true
-  
   },
-})
+});
 
 let messages = [];
 let userCount = 0;
